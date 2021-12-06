@@ -12,7 +12,7 @@ getCounts(pred, truth)
 \item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
 }
 \value{
-the sensitivity given as true pos/(true pos + false neg)
+a vector of numbers of size=4 in this order: TP, TN, FP, FN
 }
 \description{
 Support function that takes a set of predictions and set of ground truths

@@ -2,8 +2,7 @@
 % Please edit documentation in R/sensitivities.R
 \name{sensitivity}
 \alias{sensitivity}
-\title{gets sensitivity given set of predictions and set of ground truths
-predictions and ground truths can either be boolean or 1 and 0, must be same length}
+\title{Computers Sensitivities}
 \usage{
 sensitivity(pred, truth)
 }
