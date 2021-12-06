@@ -31,3 +31,5 @@ pcLollipop(x): A function that creates a lollipop plot of the principal componen
 TO DOs
 - need to check Homework 7, Problem 10 (chiSquareCounts(tib)). I wrote it to pass in v1, v2, and then didn't use it...why?
 - need to update roxygen comments for all functions
+- week 8s: did we want these to return true/false or the adjusted p values?
+- 
