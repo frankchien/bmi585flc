@@ -18,17 +18,11 @@
 #' accuracy(pred,truth)
 #' 
 
-t_tests <- function(n, delta){ #takes n per group and a delta, returns a p value
-  sample1 <- rnorm(n,mean=0)
-  sample2 <- rnorm(n,mean=delta)
-  round(t.test(sample1,sample2)$p.value,4)
-}
-
-postHocPower <- function(n_per_group,cohens_d){
+postHocPower <- function(n,delta){
   #runs 1000 t-tests and estimates power
-  p.values <- replicate(1000,t_tests(n_per_group,cohens_d))
+  p.values <- replicate(1000, t.test(rnorm(n,mean=0),rnorm(n,mean=delta))$p.value)
   num_significant <- length(which(p.values <= 0.05)) 
   power_estimate <- num_significant/length(p.values)
   power_estimate
 }
-#print(paste0("post hoc power estimate = ", postHocPower(12,1)))
+
