@@ -29,5 +29,6 @@ postHocPower <- function(n_per_group,cohens_d){
   p.values <- replicate(1000,t_tests(n_per_group,cohens_d))
   num_significant <- length(which(p.values <= 0.05)) 
   power_estimate <- num_significant/length(p.values)
+  power_estimate
 }
 #print(paste0("post hoc power estimate = ", postHocPower(12,1)))
