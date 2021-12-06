@@ -7,7 +7,7 @@
 #' @examples
 #' sensitivity(c(T,T,F,T), c(T,T,F,F))
 
-Specificity <-function(pred, truth){
+specificity <-function(pred, truth){
   counts <- GetCounts(pred,truth)
   #specificity = true neg / (true neg + false pos)
   counts[2] / (counts[2]+counts[3])

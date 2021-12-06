@@ -7,7 +7,7 @@
 #' @examples 
 #' sensitivity(c(T,T,F,T), c(T,T,F,F))
 
-Sensitivity <- function(pred, truth){ #takes either logical vectors or 1 and 0s
+sensitivity <- function(pred, truth){ #takes either logical vectors or 1 and 0s
   counts <- GetCounts(pred,truth)
   #sensitivity = true pos / (true pos + false neg)
   counts[1] / (counts[1] + counts[4]) #see comments for get counts for indices

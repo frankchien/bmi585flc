@@ -1,4 +1,4 @@
-GetCounts <- function(pred, truth){
+getCounts <- function(pred, truth){
   #support function that takes vector of predictions and ground truths
   #allows for either 1 & 0 or T/F vectors
   #no matter how its passed, we will be using the booleans
