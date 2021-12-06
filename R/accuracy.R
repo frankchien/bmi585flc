@@ -18,7 +18,13 @@
 #' accuracy(pred,truth)
 
 accuracy <- function(pred, truth){
-  counts <- getCounts(pred,truth)
+  pred <- as.logical(pred)
+  truth <- as.logical(truth)
+  num_true_pos <- length(which(pred&truth)) 
+  num_true_neg <- length(which(!pred&!truth))
+  num_false_pos <- length(which(pred&!truth))
+  num_false_neg <- length(which(!pred&truth))
+  counts <- c(num_true_pos,num_true_neg,num_false_pos,num_false_neg)
   #Accuracy = (true pos + true neg )/ (#all pos + #all neg)
   (counts[1] + counts[2]) / (counts[1]+counts[2]+counts[3]+counts[4])
 }
