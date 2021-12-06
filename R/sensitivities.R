@@ -1,3 +1,5 @@
+#' Computers Sensitivities
+#'
 #' gets sensitivity given set of predictions and set of ground truths
 #' predictions and ground truths can either be boolean or 1 and 0, must be same length
 #'

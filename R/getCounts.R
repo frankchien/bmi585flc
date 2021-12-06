@@ -6,7 +6,7 @@
 #'
 #' @param pred vector of 1/0 or True and False representing predictions
 #' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  the sensitivity given as true pos/(true pos + false neg)
+#' @return  a vector of numbers of size=4 in this order: TP, TN, FP, FN
 
 getCounts <- function(pred, truth){
   #support function that takes vector of predictions and ground truths
