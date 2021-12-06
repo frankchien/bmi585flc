@@ -2,9 +2,7 @@
 % Please edit documentation in R/getCounts.R
 \name{getCounts}
 \alias{getCounts}
-\title{Support function that takes a set of predictions and set of ground truths
-predictions and ground truths can either be boolean or 1 and 0, must be same length
-Returns numbers of True Positive, True Negatives, False Positives, and False Negatives in that order in a number vector of size 4}
+\title{Get Counts for 2x2 Table}
 \usage{
 getCounts(pred, truth)
 }
