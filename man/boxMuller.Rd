@@ -2,19 +2,27 @@
 % Please edit documentation in R/boxMuller.R
 \name{boxMuller}
 \alias{boxMuller}
-\title{Calculates Box Muller}
+\title{Computes Box Muller Transformation}
 \usage{
 boxMuller(n)
 }
 \arguments{
-\item{n}{number of observations}
+\item{n}{number of sample estimates from the normal distribution}
 }
 \value{
-stuff
+a vector of doubles of size n sampled from the normal standard distribution N(0,1)
 }
 \description{
-takes an N and does box muller
+takes a desired value for n and returns n samples from the standard normal distribution using Box Muller Transformation
 }
 \details{
-to write later
+computes n samples using the Box Muller transformation to estimate samples from a normal distribution. Uses the following two formulas:
+\eqn{x1 = sqrt(-2*log(u1)) * (cos(2*pi*u2))}
+\eqn{x2 = sqrt(-2*log(u1)) * (sin(2*pi*u2))}
+}
+\examples{
+normal_estimate <- boxMuller(500)
+#verify that mu and std is approximately 0 and 1
+mean(normal_estimate)
+sd(normal_estimate)
 }

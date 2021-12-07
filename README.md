@@ -11,8 +11,8 @@ accuracy(pred,truth)
 ppv(pred,truth)
 f1(pred,truth)
 
-Homework 4, Problem 5. (boxMuller(n))
-Homework 6, Problem 1 (twoSidedT(t,n))
+Homework 4, Problem 5. (boxMuller(n)) - done
+Homework 6, Problem 1 (twoSidedT(t,n)) 
 Homework 6, Problem 1 (twoSidedZ(z))
 Homework 6, Problem 6 (effectSize(x,g))
 Homework 6, Problem 15 (welchT(x,y))
@@ -32,4 +32,4 @@ TO DOs
 - need to check Homework 7, Problem 10 (chiSquareCounts(tib)). I wrote it to pass in v1, v2, and then didn't use it...why?
 - need to update roxygen comments for all functions
 - week 8s: did we want these to return true/false or the adjusted p values?
-- 
+- homework 7, minimumN(d) takes effect size and input and returns minimum per group sample size - different than homework (slightly)
