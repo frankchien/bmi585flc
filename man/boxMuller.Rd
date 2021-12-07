@@ -16,7 +16,7 @@ a vector of doubles of size n sampled from the normal standard distribution N(0,
 takes a desired value for n and returns n samples from the standard normal distribution using Box Muller Transformation
 }
 \details{
-computes n samples using the Box Muller transformation to estimate samples from a normal distribution. Uses the following two formulas: \cr
+computes n samples using the Box Muller transformation to estimate samples from a normal distribution. Uses the following two formulas: \cr \cr
 \eqn{x1 = sqrt(-2*log(u1)) * (cos(2*pi*u2))} \cr
 \eqn{x2 = sqrt(-2*log(u1)) * (sin(2*pi*u2))}
 }
