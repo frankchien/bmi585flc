@@ -19,5 +19,5 @@ takes a tibble or dataframe and plots the loading matrix computed by principal c
 }
 \examples{
 X <- tibble(iris[,-which(names(iris)=="Species")]) #iris dataset without species
-pcLollipop(X, 2)
+pcLollipop(X)
 }
