@@ -14,9 +14,9 @@
 #' @return Effect Size / Cohen's D
 #'
 #' @examples
-#' #Comparing modeled tumor sizes between a treated and untreated grouping, as done in class: \cr
-#' groups <- c(rep(1,times=50),rep(0,times=50)) #instantiates 50 treated tumors, 50 untreated tumors \cr
-#' modeled_tumor_size <- 4 -2*groups + rnorm(100) #instantiates 100 tumor sizes based on treatment group \cr
+#'
+#' groups <- c(rep(1,times=50),rep(0,times=50))  \cr
+#' modeled_tumor_size <- 4 -2*groups + rnorm(100)  \cr
 #' effectSize(modeled_tumor_size, groups) \cr
 
 #from homework 6
