@@ -2,27 +2,23 @@
 % Please edit documentation in R/bhAdjust.R
 \name{bhAdjust}
 \alias{bhAdjust}
-\title{Calculates Accuracy}
+\title{Bonferroni Adjustment}
 \usage{
-bhAdjust(p, alpha)
+bhAdjust(p)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
-
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{p}{a numeric vector of p values}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+logical vector, true if p values remain significant after bonferroni correction
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Tests for significance using Bonferroni adjustment for multiple hypothesis testing
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Tests to see if p-values remain significant at p < 0.05 using bonferroni adjustment for multiple-hypothesis testing
 }
 \examples{
-pred <- c(1,1,0,1,1,0,0)
-truth < c(1,0,0,1,1,0,1)
-accuracy(pred,truth)
+p <- c(0.0025, 0.0050, 0.0075, 0.0100, 0.0125, 0.0150, 0.0175, 0.0200, 0.0225, 0.0250)
+bhAdjust(p)
 }

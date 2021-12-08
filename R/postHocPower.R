@@ -1,28 +1,28 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Post-Hoc Power
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Given an effect size d and two sample sizes n1 and n2, estimates Post-Hoc Power
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
+#' Uses Monte Carlo simulation approach to run 1000 t-tests against 2 generated samples of size n1 and n2 respectively.
+#' The mean of the second normal distribution is centered at d to allow for the given effect size
+#'
+#' @param d effect size
+#' @param n1 number of observations in first group
+#' @param n2 number of observations in second group
+#' @return post hoc power estimate
+#'
 #' @examples
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
-#' 
+#' postHocPower(1,12,12)
+#'
 
-postHocPower <- function(n,delta){
+postHocPower <- function(d,n1,n2){
   #runs 1000 t-tests and estimates power
-  p.values <- replicate(1000, t.test(rnorm(n,mean=0),rnorm(n,mean=delta))$p.value)
-  num_significant <- length(which(p.values <= 0.05)) 
+  p.values <- replicate(1000, t.test(rnorm(n1,mean=0),rnorm(n2,mean=d))$p.value)
+  num_significant <- length(which(p.values <= 0.05))
   power_estimate <- num_significant/length(p.values)
   power_estimate
 }
+
 

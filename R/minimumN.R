@@ -1,24 +1,23 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Minimum N
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Computes the minimum number of samples n per group to resolve a specified effect size d with 80% power
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
-#' @example
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
+#' uses power.t.test to compute minimum sample sizes n. Passes 0.8 to power.t.test to compute sample size for 80% power
+#' Assumes discrete number of observations, and so the ceiling of the output is returned.
+#'
+#' @param d a desired effect size / Cohen's D
+#' @return  minimum number of samples needed to resolve effect size d rounded up to nearest whole number
+#'
+#' @examples
+#' minimumN(10)
 
-minimumN <- function(p){
-  power<-power.t.test(power=p, delta=1.0)
+minimumN <- function(d){
+  #takes effect size, return minimum per group
+  power<-power.t.test(power=0.8, delta=d)
   return(ceiling(power$n)) #since were getting a sample size, we will round up using ceiling
   #eg you can't have a sample of 1.5, will round up to 2 to ensure specified power is achieved
 }
+

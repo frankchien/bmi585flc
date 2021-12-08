@@ -2,22 +2,32 @@
 % Please edit documentation in R/sensitivities.R
 \name{sensitivity}
 \alias{sensitivity}
-\title{Computers Sensitivities}
+\title{Sensitivity}
 \usage{
 sensitivity(pred, truth)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{pred}{vector of 1s and 0s or True and False representing predictions}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{truth}{vector of 1s and 0s or True and False representing gold standards or ground truths}
 }
 \value{
-the sensitivity given as true pos/(true pos + false neg)
+sensitivity given as true pos/(true pos + false neg)
 }
 \description{
-gets sensitivity given set of predictions and set of ground truths
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Computes sensitivity given set of predictions and set of ground truths
+}
+\details{
+Takes in vectors representing a prediction and a ground truth.
+Vectors may be either logical using T/F or numeric using 1 and 0s.
+Vectors must be of the same length
 }
 \examples{
-sensitivity(c(T,T,F,T), c(T,T,F,F))
+pred1 <- c(1,1,0,1,1,0,0)
+truth1 < c(1,0,0,1,1,0,1)
+sensitivity(pred1,truth1)
+
+pred2 <- c(T,T,F,T,T,F,F)
+truth2 <- c(T,F,F,T,T,F,T)
+sensitivity(pred2, truth2)
 }

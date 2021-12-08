@@ -2,27 +2,28 @@
 % Please edit documentation in R/r2.R
 \name{r2}
 \alias{r2}
-\title{Calculates Accuracy}
+\title{R2}
 \usage{
-r2(data, predict)
+r2(pred, truth)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{pred}{a numeric vector of predicted/fitted values}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{truth}{a numeric vector of true/observed values}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+r2-value
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Computes the R2 value
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Uses 2 numeric vectors pred and truth to compute an R2 value
 }
 \examples{
-pred <- c(1,1,0,1,1,0,0)
-truth < c(1,0,0,1,1,0,1)
-accuracy(pred,truth)
+#using the ISLR::Credit database for this example
+truth <- ISLR::Credit$Limit
+reg_model <- lm(ISLR::Credit$Limit~ISLR::Credit$Income)
+pred <- reg_model$fitted.values
+r2(pred, truth)
 }

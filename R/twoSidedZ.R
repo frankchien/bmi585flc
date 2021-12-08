@@ -1,23 +1,20 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Two Sided Z-Score
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Take a Z-statistic and computes two sided area under the Z-desnity
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
-#' @example
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
+#' Computes two sided area under z-density using R's pnorm function. Left sided area under density is computed, and doubled.
+#'
+#' @param z a value for the z-statistic
+#' @return  two sided area under z-density given a value for z statistic
+#'
+#' @examples
+#' twoSidedZ(2)
 
 twoSidedZ = function(z){ #returns the 2 sided area under density >= abs(z)
   z <- abs(z)
-  2*(1-pnorm(z)) 
+  2*(1-pnorm(z))
 }
+

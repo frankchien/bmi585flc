@@ -2,28 +2,28 @@
 % Please edit documentation in R/postHocPower.R
 \name{postHocPower}
 \alias{postHocPower}
-\title{Calculates Accuracy}
+\title{Post-Hoc Power}
 \usage{
-postHocPower(n, delta)
+postHocPower(d, n1, n2)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{d}{effect size}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{n1}{number of observations in first group}
+
+\item{n2}{number of observations in second group}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+post hoc power estimate
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Given an effect size d and two sample sizes n1 and n2, estimates Post-Hoc Power
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Uses Monte Carlo simulation approach to run 1000 t-tests against 2 generated samples of size n1 and n2 respectively.
+The mean of the second normal distribution is centered at d to allow for the given effect size
 }
 \examples{
-pred <- c(1,1,0,1,1,0,0)
-truth < c(1,0,0,1,1,0,1)
-accuracy(pred,truth)
+postHocPower(1,12,12)
 
 }

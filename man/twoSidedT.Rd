@@ -2,22 +2,24 @@
 % Please edit documentation in R/twoSidedT.R
 \name{twoSidedT}
 \alias{twoSidedT}
-\title{Calculates Accuracy}
+\title{Two Sided T-Test}
 \usage{
 twoSidedT(t, df)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{t}{a t-statistic to compute area}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{df}{degrees of freedom}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+two sided area under t-density given t, df
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Takes a test statistic t, a degree of freedom and computes the two sided area under the t-density
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Computes two sided area under t-density using R's pt function. Left sided area under density is computed, and doubled.
+}
+\examples{
+twoSidedT(2, df=10)
 }

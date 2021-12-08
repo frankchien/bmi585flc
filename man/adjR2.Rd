@@ -2,28 +2,31 @@
 % Please edit documentation in R/adjR2.R
 \name{adjR2}
 \alias{adjR2}
-\title{Calculates Accuracy}
+\title{Adjusted R2}
 \usage{
-adjR2(data, predict, d)
+adjR2(pred, truth, d)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{pred}{a numeric vector of predicted/fitted values}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{truth}{a numeric vector of true/observed values}
+
+\item{d}{number of prediction variables used}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+adjusted r2-value
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Computes the adjusted R2 value
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Uses 2 numeric vectors pred and truth to compute an adjusted R2 value, adjusted by number of parameters
 }
 \examples{
-pred <- c(1,1,0,1,1,0,0)
-truth < c(1,0,0,1,1,0,1)
-accuracy(pred,truth)
+#using the ISLR::Credit database for this example
+truth <- ISLR::Credit$Limit
+reg_model <- lm(ISLR::Credit$Limit~ISLR::Credit$Income + ISLR::Credit$Cards)
+pred <- reg_model$fitted.values
+adjR2(pred, truth, 2)
 
 }

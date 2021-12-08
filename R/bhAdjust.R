@@ -1,23 +1,21 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Bonferroni Adjustment
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Tests for significance using Bonferroni adjustment for multiple hypothesis testing
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
+#' Tests to see if p-values remain significant at p < 0.05 using bonferroni adjustment for multiple-hypothesis testing
+#'
+#' @param p a numeric vector of p values
+#' @return logical vector, true if p values remain significant after bonferroni correction
+#'
 #' @examples
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
+#' p <- c(0.0025, 0.0050, 0.0075, 0.0100, 0.0125, 0.0150, 0.0175, 0.0200, 0.0225, 0.0250)
+#' bhAdjust(p)
 
 
-bhAdjust <- function(p, alpha){
-  p < alpha/length(p)
+bhAdjust <- function(p){
+  p < 0.05/length(p)
 }
+

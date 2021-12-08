@@ -1,28 +1,32 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Adjusted R2
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Computes the adjusted R2 value
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
+#' Uses 2 numeric vectors pred and truth to compute an adjusted R2 value, adjusted by number of parameters
+#'
+#' @param pred a numeric vector of predicted/fitted values
+#' @param truth a numeric vector of true/observed values
+#' @param d number of prediction variables used
+#' @return  adjusted r2-value
+#'
 #' @examples
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
-#' 
-adjR2 <- function(data, predict, d) { 
+#' #using the ISLR::Credit database for this example
+#' truth <- ISLR::Credit$Limit
+#' reg_model <- lm(ISLR::Credit$Limit~ISLR::Credit$Income + ISLR::Credit$Cards)
+#' pred <- reg_model$fitted.values
+#' adjR2(pred, truth, 2)
+#'
+
+adjR2 <- function(pred, truth, d) {
   #takes a vector of data, a vector of predictions, and the number of parameters d. Returns adjusted R2
-  n <- length(data)
-  RSS <- sum((predict-data)**2) #sum of squared difference between y and y_hat
-  TSS <- sum((data - mean(data))**2) #sum of squared difference between y and mean(y)
+  n <- length(pred)
+  RSS <- sum((truth-pred)**2) #sum of squared difference between y and y_hat
+  TSS <- sum((pred - mean(pred))**2) #sum of squared difference between y and mean(y)
   RSS <- RSS/(n-d-1) #this is the adjustment part, RSS is divided by d
   TSS <- TSS/(n-1)
   1-(RSS/TSS)
 }
+

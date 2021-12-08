@@ -2,22 +2,29 @@
 % Please edit documentation in R/welchT.R
 \name{welchT}
 \alias{welchT}
-\title{Calculates Accuracy}
+\title{Welch T-Test}
 \usage{
 welchT(x, y)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{x}{numeric vector representing sample 1}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{y}{numeric vector representing sample 2}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+2 named variables: t-statistic, effective degree of freedom
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Computes a manual Welch T-test given two sample vectors
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Takes two numeric vectors x, y representing two samples.
+Computes a manual Welch T-test statistic and effective degrees of freedom
+}
+\examples{
+#using an example from class with data by Dr. McKay:
+bp_df <- read.csv("https://jlucasmckay.bmi.emory.edu/global/bmi585/two_group_bp.csv")
+group_a <- bp_df$bp[which(bp_df$group=='A')]
+group_b <- bp_df$bp[which(bp_df$group=='B')]
+welchT(group_a,group_b)
 }

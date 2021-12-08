@@ -19,7 +19,6 @@
 #' sd(normal_estimate)
 
 #from Exercise 4, Question 5
-#Guangji comment - mean and sample variance printed in samples
 boxMuller <- function(n){
   u1 <- runif(n/2)
   u2 <- runif(n/2)

@@ -2,22 +2,28 @@
 % Please edit documentation in R/chiSquareCounts.R
 \name{chiSquareCounts}
 \alias{chiSquareCounts}
-\title{Calculates Accuracy}
+\title{Chi-Squared Counts}
 \usage{
-chiSquareCounts(data, v1, v2)
+chiSquareCounts(tib, v1, v2)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{tib}{a tibble of data with at least 2 columns represting grouping variables}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{v1}{string representing column name of first grouping variable in the tibble}
+
+\item{v2}{string representing column name of second grouping variable in the tibble}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+Chi Sq test statistic object, with X2, df, and p-values
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Given a tibble, calculates a chi-square statistic, with degree of freedom and p-values
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+computes a 2x2 count table, uses chisq.test() to compute the chi-sq statistics and results
+}
+\examples{
+#using a sample daaset from Dr. McKay's website
+count_data <- read.csv("https://jlucasmckay.bmi.emory.edu/global/bmi585/demographics.csv")
+chiSquareCounts(count_data,"sex","group")
 }

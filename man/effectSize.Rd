@@ -2,22 +2,29 @@
 % Please edit documentation in R/effectSize.R
 \name{effectSize}
 \alias{effectSize}
-\title{Calculates Accuracy}
+\title{Effect Size}
 \usage{
-effectSize(t, g)
+effectSize(x, g)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
+\item{x}{a vector of doubles with the observations}
 
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{g}{a vector of 1 or 0 indicating grouping.}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+Effect Size / Cohen's D
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Calculates the effect size / Cohen's D given a vector of data and a vector for grouping
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Computes the effect size by dividing the sample difference by the standard deviation of the pooled sample.
+The function takes a vector of observations and a vector of groups in the form of group1 == 1, group2 ==2.
+Group 1 and 2 must of same size
+}
+\examples{
+#Comparing modeled tumor sizes between a treated and untreated grouping, as done in class:
+groups <- c(rep(1,times=50),rep(0,times=50)) #instantiates 50 treated tumors, 50 untreated tumors
+modeled_tumor_size <- 4 -2*groups + rnorm(100) #instantiates 100 tumor sizes based on treatment group
+effectSize(modeled_tumor_size, groups)
 }

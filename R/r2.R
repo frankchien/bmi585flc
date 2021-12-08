@@ -1,24 +1,25 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' R2
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Computes the R2 value
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
+#' Uses 2 numeric vectors pred and truth to compute an R2 value
+#'
+#' @param pred a numeric vector of predicted/fitted values
+#' @param truth a numeric vector of true/observed values
+#' @return  r2-value
+#'
 #' @examples
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
+#' #using the ISLR::Credit database for this example
+#' truth <- ISLR::Credit$Limit
+#' reg_model <- lm(ISLR::Credit$Limit~ISLR::Credit$Income)
+#' pred <- reg_model$fitted.values
+#' r2(pred, truth)
 
-r2 <- function(data, predict){ #takes a vector of y and vector of y_hat to return a R2 value
-  RSS <- sum((predict-data)**2) #sum of squared difference between y and y_hat
-  TSS <- sum((data - mean(data))**2) #sum of squared difference between y and mean(y)
+r2 <- function(pred, truth){ #takes a vector of y and vector of y_hat to return a R2 value
+  RSS <- sum((pred-truth)**2) #sum of squared difference between y and y_hat
+  TSS <- sum((pred - mean(pred))**2) #sum of squared difference between y and mean(y)
   1-(RSS/TSS)
 }

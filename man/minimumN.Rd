@@ -2,22 +2,23 @@
 % Please edit documentation in R/minimumN.R
 \name{minimumN}
 \alias{minimumN}
-\title{Calculates Accuracy}
+\title{Minimum N}
 \usage{
-minimumN(p)
+minimumN(d)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
-
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{d}{a desired effect size / Cohen's D}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+minimum number of samples needed to resolve effect size d rounded up to nearest whole number
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Computes the minimum number of samples n per group to resolve a specified effect size d with 80\% power
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+uses power.t.test to compute minimum sample sizes n. Passes 0.8 to power.t.test to compute sample size for 80\% power
+Assumes discrete number of observations, and so the ceiling of the output is returned.
+}
+\examples{
+minimumN(10)
 }

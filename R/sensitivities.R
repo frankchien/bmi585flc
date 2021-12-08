@@ -1,13 +1,27 @@
-#' Computers Sensitivities
+#' @title
+#' Sensitivity
 #'
-#' gets sensitivity given set of predictions and set of ground truths
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
+#' @description
+#' Computes sensitivity given set of predictions and set of ground truths
 #'
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  the sensitivity given as true pos/(true pos + false neg)
+#' @details
+#' Takes in vectors representing a prediction and a ground truth.
+#' Vectors may be either logical using T/F or numeric using 1 and 0s.
+#' Vectors must be of the same length
+#'
+#' @param pred vector of 1s and 0s or True and False representing predictions
+#' @param truth vector of 1s and 0s or True and False representing gold standards or ground truths
+#'
+#' @return  sensitivity given as true pos/(true pos + false neg)
+#'
 #' @examples
-#' sensitivity(c(T,T,F,T), c(T,T,F,F))
+#' pred1 <- c(1,1,0,1,1,0,0)
+#' truth1 < c(1,0,0,1,1,0,1)
+#' sensitivity(pred1,truth1)
+#'
+#' pred2 <- c(T,T,F,T,T,F,F)
+#' truth2 <- c(T,F,F,T,T,F,T)
+#' sensitivity(pred2, truth2)
 
 sensitivity <- function(pred, truth){ #takes either logical vectors or 1 and 0s
   pred <- as.logical(pred)

@@ -1,22 +1,23 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Welch T-Test
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Computes a manual Welch T-test given two sample vectors
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
-#' @example
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
-#' 
+#' Takes two numeric vectors x, y representing two samples. 
+#' Computes a manual Welch T-test statistic and effective degrees of freedom
+#'
+#' @param x numeric vector representing sample 1
+#' @param y numeric vector representing sample 2
+#' @return 2 named variables: t-statistic, effective degree of freedom
+#'
+#' @examples
+#' #using an example from class with data by Dr. McKay:
+#' bp_df <- read.csv("https://jlucasmckay.bmi.emory.edu/global/bmi585/two_group_bp.csv")
+#' group_a <- bp_df$bp[which(bp_df$group=='A')]
+#' group_b <- bp_df$bp[which(bp_df$group=='B')]
+#' welchT(group_a,group_b)
 
 welchT <- function(x,y){ #takes a sample x, separte sample y, returns a manually calculated t + dof in form of a vector (t, dof)
   t <- (mean(x) - mean(y)) / sqrt ( (sd(x)**2)/length(x) + sd(y)**2/length(y) )
@@ -29,5 +30,5 @@ welchT <- function(x,y){ #takes a sample x, separte sample y, returns a manually
   B <- ((s1**2/n1)**2) * (1/(n1-1))
   C <- ((s2**2/n2)**2) * (1/(n2-1))
   dof <- A / (B+C)
-  return(c(t, dof))
+  setNames(c(t,dof), c("t-statistic", "estimated DoF"))
 }

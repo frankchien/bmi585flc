@@ -2,22 +2,22 @@
 % Please edit documentation in R/twoSidedZ.R
 \name{twoSidedZ}
 \alias{twoSidedZ}
-\title{Calculates Accuracy}
+\title{Two Sided Z-Score}
 \usage{
 twoSidedZ(z)
 }
 \arguments{
-\item{pred}{vector of 1/0 or True and False representing predictions}
-
-\item{truth}{vector of 1/0 or True and False representing gold standards or ground truths}
+\item{z}{a value for the z-statistic}
 }
 \value{
-Accuracy, computed as (true pos + true neg) / (all pos + all neg)
+two sided area under z-density given a value for z statistic
 }
 \description{
-Calculates the accuracy of a given test/prediction against a gold standard/ground truth.
+Take a Z-statistic and computes two sided area under the Z-desnity
 }
 \details{
-Uses getCounts to obtain values for the 2x2 table
-predictions and ground truths can either be boolean or 1 and 0, must be same length
+Computes two sided area under z-density using R's pnorm function. Left sided area under density is computed, and doubled.
+}
+\examples{
+twoSidedZ(2)
 }

@@ -1,25 +1,26 @@
-#' @title 
-#' Calculates Accuracy
+#' @title
+#' Chi-Squared Counts
 #'
-#' @description 
-#' Calculates the accuracy of a given test/prediction against a gold standard/ground truth. 
-#' 
+#' @description
+#' Given a tibble, calculates a chi-square statistic, with degree of freedom and p-values
+#'
 #' @details
-#' Uses getCounts to obtain values for the 2x2 table
-#' predictions and ground truths can either be boolean or 1 and 0, must be same length
-#' 
-#' @param pred vector of 1/0 or True and False representing predictions
-#' @param truth vector of 1/0 or True and False representing gold standards or ground truths
-#' @return  Accuracy, computed as (true pos + true neg) / (all pos + all neg) 
-#' 
-#' @example
-#' pred <- c(1,1,0,1,1,0,0)
-#' truth < c(1,0,0,1,1,0,1)
-#' accuracy(pred,truth)
-#' 
+#' computes a 2x2 count table, uses chisq.test() to compute the chi-sq statistics and results
+#'
+#' @param tib a tibble of data with at least 2 columns represting grouping variables
+#' @param v1 string representing column name of first grouping variable in the tibble
+#' @param v2 string representing column name of second grouping variable in the tibble
+#' @return Chi Sq test statistic object, with X2, df, and p-values
+#'
+#' @examples
+#' #using a sample daaset from Dr. McKay's website
+#' count_data <- read.csv("https://jlucasmckay.bmi.emory.edu/global/bmi585/demographics.csv")
+#' chiSquareCounts(count_data,"sex","group")
 
-chiSquareCounts <- function(data, v1, v2){
+#From Homework 7
+chiSquareCounts <- function(tib, v1, v2){
   #takes a data set and 2 named variables to count chi2
-  count_table<-with(data, table(sex, group))
+  count_table<-with(tib, table(sex, group))
   chisq.test(count_table)
 }
+
