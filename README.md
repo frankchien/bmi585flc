@@ -24,12 +24,6 @@ Homework 8, Problem 1 (fdrAdjust(p)) - done (returns logical vector)
 Homework 11, Problem 1 (r2(pred,truth)) - done
 Homework 11, Problem 1 (adjR2(pred,truth)) - done (also takes in d = number of prediction variables)
 
-unscale(x): A function that takes a numerical object from scale and reverses the centering/scaling, if any. (These are stored as attributes).
-pcApprox(x, npc): A function that returns an approximation to the data x based on npc PCs. (Note that the approximation should be rescaled and centered to match the original data). Should work on tibbles or dataframes; either can be returned.
-pcLollipop(x): A function that creates a lollipop plot of the principal component loadings of the (potentially unscaled/uncentered) data x. Should work on tibbles or dataframes. The plot object is returned.
-
-TO DOs
-- need to check Homework 7, Problem 10 (chiSquareCounts(tib)). I wrote it to pass in v1, v2, and then didn't use it...why?
-
-
-
+unscale(x) - done
+pcApprox(x, npc): - done (no clue if done right, but done)
+pcLollipop(x): - not done
