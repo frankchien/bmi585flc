@@ -12,7 +12,7 @@
 #' @return  minimum number of samples needed to resolve effect size d rounded up to nearest whole number
 #'
 #' @examples
-#' minimumN(10)
+#' minimumN(0.5)
 
 minimumN <- function(d){
   #takes effect size, return minimum per group

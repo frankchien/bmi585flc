@@ -20,5 +20,5 @@ uses power.t.test to compute minimum sample sizes n. Passes 0.8 to power.t.test 
 Assumes discrete number of observations, and so the ceiling of the output is returned.
 }
 \examples{
-minimumN(10)
+minimumN(0.5)
 }
