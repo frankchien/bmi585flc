@@ -15,5 +15,4 @@ pcLollipop <- function(x){
   loadings <- prcomp(x)$rotation |> tibble()
   loadings |> ggplot2::ggplot()
   loadings
-
 }

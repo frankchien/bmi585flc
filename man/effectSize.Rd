@@ -23,8 +23,8 @@ The function takes a vector of observations and a vector of groups in the form o
 Group 1 and 2 must of same size
 }
 \examples{
-#Comparing modeled tumor sizes between a treated and untreated grouping, as done in class:
-groups <- c(rep(1,times=50),rep(0,times=50)) #instantiates 50 treated tumors, 50 untreated tumors
-modeled_tumor_size <- 4 -2*groups + rnorm(100) #instantiates 100 tumor sizes based on treatment group
-effectSize(modeled_tumor_size, groups)
+#Comparing modeled tumor sizes between a treated and untreated grouping, as done in class: \cr
+groups <- c(rep(1,times=50),rep(0,times=50)) #instantiates 50 treated tumors, 50 untreated tumors \cr
+modeled_tumor_size <- 4 -2*groups + rnorm(100) #instantiates 100 tumor sizes based on treatment group \cr
+effectSize(modeled_tumor_size, groups) \cr
 }
