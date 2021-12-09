@@ -15,9 +15,9 @@ pcLollipop(x)
 plots the lollipop plot from principal component analysis given a tibble
 }
 \details{
-takes a tibble or dataframe and plots the loading matrix computed by principal component analysis
+takes a tibble or dataframe and plots the loading matrix computed by principal component analysis. Uses ggplot to render graphic
 }
 \examples{
-X <- tibble(iris[,-which(names(iris)=="Species")]) #iris dataset without species
-pcLollipop(X)
+x <- iris[1:4] \cr
+pcLollipop(s)
 }
