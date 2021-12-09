@@ -6,13 +6,9 @@ This is a R package compiling various functions that was written over the course
 These are the functions contained
 
 sensitivity(pred,truth) - done
-
 specificity(pred,truth) - done
-
 accuracy(pred,truth) - done
-
 ppv(pred,truth) - done
-
 f1(pred,truth) - done
 
 
