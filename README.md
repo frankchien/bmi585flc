@@ -26,5 +26,5 @@ Homework 11, Problem 1 (r2(pred,truth)) - done
 Homework 11, Problem 1 (adjR2(pred,truth)) - done  
 
 unscale(x) - done  
-pcApprox(x, npc) -  
-pcLollipop(x) -  yet to be fully implemented  
+pcApprox(x, npc) - done  
+pcLollipop(x) - done  
