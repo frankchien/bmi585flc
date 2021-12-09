@@ -18,6 +18,6 @@ plots the lollipop plot from principal component analysis given a tibble
 takes a tibble or dataframe and plots the loading matrix computed by principal component analysis. Uses ggplot to render graphic
 }
 \examples{
-x <- iris[1:4] \cr
-pcLollipop(s)
+x <- iris[1:4]
+pcLollipop(x)
 }

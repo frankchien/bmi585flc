@@ -10,8 +10,8 @@
 #' @value plots lollipop ggplot
 #'
 #' @examples
-#' x <- iris[1:4] \cr
-#' pcLollipop(s)
+#' x <- iris[1:4]
+#' pcLollipop(x)
 
 pcLollipop <- function(x){
   pca_rotations<-prcomp(x)$rotation
